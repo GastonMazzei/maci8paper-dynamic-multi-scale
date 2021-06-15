@@ -18,11 +18,16 @@ x=x.to_numpy()[:,-len(domain):]/409
 print('new x shape is', x.shape)
 
 for i in range(len(x)):
-    ax[0].scatter(domain,x[i,:],c='k')
+    #ax[0].scatter(domain,x[i,:],c='k')
     if i==len(x)-1:
+        continue
         ax[0].plot(domain,x[i,:],c='k',lw=2,alpha=1,ls='-',label='simulation')
     else:
-        ax[0].plot(domain,x[i,:],c='k',lw=2,alpha=0.3,ls=':')
+        if x[i,1]>1: 
+            continue
+        else:
+            ax[0].scatter(domain,x[i,:],c='k')
+            ax[0].plot(domain,x[i,:],c='k',lw=2,alpha=0.3,ls=':')
 ax[0].grid()
 
 
